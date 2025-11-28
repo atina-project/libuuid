@@ -1,0 +1,17 @@
+add_executable(test_uuid
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_uuid.c
+)
+target_compile_definitions(test_uuid
+    PRIVATE
+        ${ExistHeaderList}
+        ${ExistFunctionList}
+        ${ExistMacroList}
+)
+target_include_directories(test_uuid
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/src
+)
+target_link_libraries(test_uuid
+    uuid
+)
