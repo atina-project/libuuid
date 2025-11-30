@@ -25,22 +25,22 @@ set(LIBUUID_SRC_LIST
 )
 
 if(${BUILD_SHARED_LIBS})
-    add_library(uuid SHARED
+    add_library(libuuid SHARED
         ${LIBUUID_SRC_LIST}
     )
 else()
-    add_library(uuid STATIC
+    add_library(libuuid STATIC
         ${LIBUUID_SRC_LIST}
     )
 endif()
 
-target_compile_definitions(uuid PRIVATE
+target_compile_definitions(libuuid PRIVATE
     ${ExistHeaderList}
     ${ExistFunctionList}
     ${ExistMacroList}
 )
 
-target_include_directories(uuid
+target_include_directories(libuuid
     PUBLIC
         ${PROJECT_SOURCE_DIR}/include
 )
