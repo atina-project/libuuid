@@ -8,6 +8,7 @@ include(cmake/precheck.cmake)
 
 set(LIBUUID_SRC_LIST
     ${PROJECT_SOURCE_DIR}/src/clear.c
+    ${PROJECT_SOURCE_DIR}/src/compare.c
     ${PROJECT_SOURCE_DIR}/src/copy.c
     ${PROJECT_SOURCE_DIR}/src/gen_uuid.c
     ${PROJECT_SOURCE_DIR}/src/isnull.c
@@ -34,15 +35,20 @@ else()
     )
 endif()
 
-target_compile_definitions(libuuid PRIVATE
-    ${ExistHeaderList}
-    ${ExistFunctionList}
-    ${ExistMacroList}
+target_compile_definitions(libuuid
+    PRIVATE
+        ${ExistHeaderList}
+        ${ExistFunctionList}
+        ${ExistMacroList}
 )
 
 target_include_directories(libuuid
     PUBLIC
         ${PROJECT_SOURCE_DIR}/include
+)
+
+set_target_properties(libuuid PROPERTIES
+    OUTPUT_NAME "uuid"
 )
 
 if(${LIBUUID_BUILD_TEST})
